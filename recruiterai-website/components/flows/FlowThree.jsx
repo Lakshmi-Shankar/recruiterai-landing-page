@@ -1,116 +1,90 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { ArchiveRestore, Database, BellRing, Rocket } from "lucide-react";
+import { Archive, Database, RefreshCw, Bell } from "lucide-react";
 
 const FlowThree = () => {
-  // Steps mapped from Flowchart 3 (image_f2359d.jpg)
-  const steps = [
-    { 
-      icon: ArchiveRestore, 
-      label: "Rejected", 
-      sub: "Scored 60-74%",
-      color: "bg-orange-50 text-orange-600 border-orange-100" 
-    },
-    { 
-      icon: Database, 
-      label: "Talent Pool", 
-      sub: "Nurture Mode",
-      color: "bg-slate-100 text-slate-600 border-slate-200" 
-    },
-    { 
-      icon: BellRing, 
-      label: "New Role", 
-      sub: "Auto-Match",
-      color: "bg-blue-50 text-blue-600 border-blue-100" 
-    },
-    { 
-      icon: Rocket, 
-      label: "Fast Track", 
-      sub: "Skip Screen",
-      color: "bg-green-50 text-green-600 border-green-100" 
-    },
-  ];
-
   return (
-    <div className="relative h-full bg-white border border-slate-200 rounded-3xl p-6 md:p-8 flex flex-col justify-between overflow-hidden group hover:border-blue-300 hover:shadow-xl transition-all duration-300">
-      
-      {/* Background Gradient Blob */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-orange-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 group-hover:bg-orange-100/50 transition-colors" />
+    <div className="h-full bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col relative">
+      <div className="bg-slate-50 border-b border-slate-100 px-4 py-3 flex items-center gap-2">
+         <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+         <span className="ml-2 text-xs font-semibold text-slate-500 uppercase tracking-wide">
+          Re-engagement Automation
+        </span>
+      </div>
 
-      <div className="relative z-10">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 bg-orange-100 rounded-lg">
-            <ArchiveRestore size={20} className="text-orange-600" />
-          </div>
-          <h3 className="text-lg font-bold text-slate-900">Talent Rediscovery</h3>
-        </div>
-        <p className="text-slate-500 text-sm mb-10 leading-relaxed">
-          Automatically resurface past silver-medalists when new roles open up.
-        </p>
-
-        {/* --- ANIMATED FLOW CHART --- */}
-        <div className="relative flex justify-between items-start mb-6">
-          
-          {/* Base Gray Line */}
-          <div className="absolute top-6 left-4 right-4 h-0.5 bg-slate-100 rounded-full" />
-          
-          {/* Animated Progress Line */}
-          <motion.div 
-            initial={{ width: 0 }}
-            whileInView={{ width: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
-            className="absolute top-6 left-4 h-0.5 bg-gradient-to-r from-orange-400 to-green-500 rounded-full"
-          />
-
-          {/* Moving Data Packet Dot */}
-          <motion.div
-            className="absolute top-[21px] left-4 w-2 h-2 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.8)] z-20"
-            animate={{ left: ["0%", "95%"], opacity: [0, 1, 1, 0] }}
-            transition={{ 
-              duration: 2.5, 
-              ease: "linear", 
-              repeatDelay: 1 
-            }}
-          />
-          
-          {/* Steps Icons */}
-          {steps.map((step, i) => (
-            <div key={i} className="relative z-10 flex flex-col items-center">
-              <motion.div 
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.3, type: "spring", stiffness: 260, damping: 20 }}
-                className={`w-12 h-12 rounded-xl border-2 flex items-center justify-center mb-3 shadow-sm bg-white ${step.color} group-hover:scale-110 transition-transform duration-300`}
-              >
-                <step.icon size={20} strokeWidth={2.5} />
-              </motion.div>
-              
-              <div className="text-center">
-                <p className="text-xs font-bold text-slate-800 mb-0.5">{step.label}</p>
-                <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wide">{step.sub}</p>
-              </div>
+      <div className="flex flex-1 relative">
+        <div className="w-12 border-r border-slate-100 flex flex-col items-center py-4 gap-4 bg-slate-50/50">
+          {[Archive, Database, Bell].map((Icon, i) => (
+            <div key={i} className="p-2 text-slate-400 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors cursor-pointer">
+              <Icon size={18} />
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Benefit Highlight Box */}
-      <div className="relative z-10 bg-slate-50 rounded-xl p-4 border border-slate-100 flex items-start gap-3">
-         <div className="mt-0.5 min-w-[16px]">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-            </span>
-         </div>
-         <div>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Impact</p>
-            <p className="text-sm font-semibold text-slate-700 leading-snug">
-              Build a qualified talent pipeline automatically. <span className="text-slate-900 font-bold">Never start from zero.</span>
-            </p>
-         </div>
+        <div className="flex-1 p-6 relative bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] flex flex-col justify-between">
+          
+          {/* --- ANIMATED CONNECTORS --- */}
+          
+          {/* 1. Base Static Dashed Line (The Track) */}
+          <div className="absolute left-[45px] top-[60px] bottom-[60px] w-0.5 border-l-2 border-dashed border-slate-200 z-0" />
+
+          {/* 2. Animated Filling Line (The Progress) */}
+          <motion.div 
+             initial={{ height: 0 }}
+             whileInView={{ height: "calc(100% - 120px)" }} // Calculates height based on top/bottom padding
+             viewport={{ once: true }}
+             transition={{ duration: 2, ease: "easeInOut", delay: 0.2 }}
+             className="absolute left-[45px] top-[60px] w-0.5 bg-gradient-to-b from-orange-400 to-green-500 z-0 origin-top"
+          />
+
+          {/* --- NODE 1: Archive --- */}
+          <div className="relative z-10 flex items-center gap-3">
+             <div className="w-10 h-10 shrink-0 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 border border-orange-200">
+                <Archive size={18} />
+             </div>
+             <div className="bg-white border border-slate-100 p-2 rounded-lg shadow-sm">
+                <div className="text-[10px] font-bold text-slate-400 uppercase">Trigger</div>
+                <div className="text-xs font-medium text-slate-800">Rejected (Silver Medalist)</div>
+             </div>
+          </div>
+
+          {/* --- MIDDLE: Waiting Period --- */}
+          <div className="ml-14 py-2 relative z-10">
+             <motion.div 
+               initial={{ opacity: 0, x: -10 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: 1 }}
+               className="bg-slate-50 px-3 py-1.5 rounded-full text-[10px] font-semibold text-slate-500 w-fit border border-slate-200"
+             >
+                Wait 3 Months...
+             </motion.div>
+          </div>
+
+          {/* --- NODE 2: Reactivation --- */}
+          <motion.div 
+             initial={{ scale: 0.9, opacity: 0 }}
+             whileInView={{ scale: 1, opacity: 1 }}
+             viewport={{ once: true }}
+             transition={{ delay: 1.5 }}
+             className="relative z-10 flex items-center gap-3"
+          >
+             <div className="w-10 h-10 shrink-0 rounded-full bg-green-100 flex items-center justify-center text-green-600 border border-green-200">
+                <RefreshCw size={18} />
+             </div>
+             
+             <div className="bg-white border border-green-200 shadow-sm p-3 rounded-xl">
+                <div className="text-[10px] font-bold text-green-600 uppercase">Match Found</div>
+                <div className="text-xs font-bold text-slate-800">New Role Invite Sent</div>
+             </div>
+          </motion.div>
+
+        </div>
+      </div>
+      
+      <div className="bg-white border-t border-slate-100 p-3 text-center">
+         <p className="text-xs text-slate-500">Never start from zero.</p>
       </div>
     </div>
   );

@@ -114,8 +114,8 @@ const FloatingCard = ({
       >
         <path
           d={currentConfig.path}
-          stroke="#CBD5E1" 
-          strokeWidth="2"
+          stroke="#FFFFFF" 
+          strokeWidth="4"
           fill="none"
         />
         <circle 
