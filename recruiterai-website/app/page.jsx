@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <Hero />
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white" id="how-it-works">
         <div className="container mx-auto px-4 max-w-6xl">
           <Title />
 
@@ -31,7 +31,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-slate-50" id="why-recruiterai">
         <ChartTitle />
         <BarGraph />
         <BottomBar />
@@ -41,7 +41,7 @@ export default function Home() {
         <Track />
       </section>
 
-      <section className="bg-slate-50">
+      <section className="bg-slate-50" id="feedback">
         <FeedbackTitle />
         <Feedback />
       </section>

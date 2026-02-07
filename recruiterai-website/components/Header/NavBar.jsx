@@ -18,10 +18,9 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Features", href: "#features" },
     { name: "How it Works", href: "#how-it-works" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "Testimonials", href: "#feedback" },
+    { name: "Why RecruiterAI", href: "#why-recruiterai" },
   ];
 
   return (
